@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アンケートフォーム</title>
+</head>
+<body>
+    <h1>アンケートに回答してください</h1>
+    <form id="surveyForm">
+        <label for="question1">質問1: あなたの好きな顔のタイプは？（複数選択可）</label><br>
+        <input type="checkbox" id="question1-1" name="question1" value="猫顔"> 猫顔<br>
+        <input type="checkbox" id="question1-2" name="question1" value="犬顔"> 犬顔<br>
+        <input type="checkbox" id="question1-3" name="question1" value="狸顔"> 狸顔<br>
+        <input type="checkbox" id="question1-4" name="question1" value="きつね顔"> きつね顔<br><br>
+
+        <label for="question2">質問2: 性格？（複数選択可）</label><br>
+        <input type="checkbox" id="question2-1" name="question2" value="仕事"> 仕事<br>
+        <input type="checkbox" id="question2-2" name="question2" value="家族"> 家族<br>
+        <input type="checkbox" id="question2-3" name="question2" value="友人"> 友人<br>
+        <input type="checkbox" id="question2-4" name="question2" value="趣味"> 趣味<br><br>
+
+        <button type="button" onclick="submitForm()">送信</button>
+    </form>
+
+    <h2>結果</h2>
+    <div id="result"></div>
+
+    <script>
+        function submitForm() {
+            // 各質問の選択肢を取得
+            const selectedQuestion1 = Array.from(document.querySelectorAll('input[name="question1"]:checked')).map(cb => cb.value);
+            const selectedQuestion2 = Array.from(document.querySelectorAll('input[name="question2"]:checked')).map(cb => cb.value);
+
+            // サーバーに送信
+            fetch('/submit-survey', {
+                method: 'POST',
+                body: JSON.stringify({
+                    question1: selectedQuestion1,
+                    question2: selectedQuestion2
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = '最適化結果: ' + data.result;
+            });
+        }
+    </script>
+</body>
+</html>

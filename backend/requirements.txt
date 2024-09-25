@@ -1,0 +1,3 @@
+Flask==2.3.3
+dwave-ocean-sdk==5.5.1
+dimod==0.12.0
