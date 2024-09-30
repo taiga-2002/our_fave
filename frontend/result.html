@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUBO結果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>QUBO最適化の結果</h1>
+        
+        <!-- 最適解に基づくおすすめの人物 -->
+        <div class="result-section">
+            <h2>おすすめの人物</h2>
+            <div class="selected-people">
+                {% for person in selected_people %}
+                    <div class="person">
+                        <img src="{{ url_for('static', filename=person['image']) }}" alt="{{ person['name'] }}" style="width:150px;height:auto;">
+                        <p>{{ person['name'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

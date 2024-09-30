@@ -1,0 +1,173 @@
+/* static/result.css */
+
+/* Google Fonts のインポート */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* CSS Variables for Theme Colors */
+:root {
+    --primary-color: #1E90FF; /* ダークブルー */
+    --secondary-color: #F5F5F5; /* ライトグレー */
+    --accent-color: #FF6347; /* トマト */
+    --text-color: #333333; /* ダークグレー */
+    --background-color: #FFFFFF; /* ホワイト */
+    --border-color: #E0E0E0; /* グレー */
+    --table-header-bg: #1E90FF; /* テーブルヘッダーの背景色 */
+    --table-header-text: #FFFFFF; /* テーブルヘッダーのテキスト色 */
+    --table-row-hover: #F1F1F1; /* テーブル行のホバー背景色 */
+    --offset-bg: #FF6347; /* オフセットの背景色 */
+    --offset-text: #FFFFFF; /* オフセットのテキスト色 */
+}
+
+/* グローバルスタイル */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* コンテナ */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(30, 144, 255, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 12px 24px rgba(30, 144, 255, 0.2);
+}
+
+/* 見出し */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+/* セクション */
+.result-section {
+    margin-bottom: 40px;
+}
+
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tr:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+
+tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* オフセット */
+.offset {
+    background-color: var(--offset-bg);
+    color: var(--offset-text);
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* エネルギーのスタイル */
+.result-section p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    th, td {
+        padding: 12px;
+    }
+
+    .offset {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .offset {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

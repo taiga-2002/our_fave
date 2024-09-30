@@ -4,7 +4,6 @@ import openjij as oj
 from dwave.system import DWaveSampler, EmbeddingComposite
 
 
-
 def create_qubo_matrix(input_data, similarity_matrix, matrices):
     num_mem = similarity_matrix.shape[0]      # メンバー数
     genre = input_data.shape[0]               # ジャンル数
@@ -67,14 +66,14 @@ def optimize_qubo(qubo):
     best_solution (dict): 最適化された解
     best_energy (float): 解のエネルギー
     """
-    token = 'DEV-835a9555f19b1a1d46fc887f291323c5cf8f8b52'  # 個人のAPI tokenを使用
+    #token = '***'  # 個人のAPI tokenを使用
 
     # OpenJijのSASamplerを使用して最適化
-    #sampler = oj.SASampler()
-    #response = sampler.sample_qubo(qubo, num_reads=100)  # num_readsは必要に応じて調整
-    dw_sampler = DWaveSampler(solver='Advantage_system6.4', token=token)
-    sampler = EmbeddingComposite(dw_sampler)
-    response=sampler.sample_qubo(qubo, num_reads=100)
+    sampler = oj.SASampler()
+    response = sampler.sample_qubo(qubo, num_reads=100)  # num_readsは必要に応じて調整
+    # dw_sampler = DWaveSampler(solver='Advantage_system6.4', token=token)
+    # sampler = EmbeddingComposite(dw_sampler)
+    # response=sampler.sample_qubo(qubo, num_reads=100)
 
     # 最適解とそのエネルギーを取得
     best_solution = response.first.sample

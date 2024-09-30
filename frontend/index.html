@@ -3,51 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アンケートフォーム</title>
+    <title>推しについての質問フォーム</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>アンケートに回答してください</h1>
-    <form id="surveyForm">
-        <label for="question1">質問1: あなたの好きな顔のタイプは？（複数選択可）</label><br>
-        <input type="checkbox" id="question1-1" name="question1" value="猫顔"> 猫顔<br>
-        <input type="checkbox" id="question1-2" name="question1" value="犬顔"> 犬顔<br>
-        <input type="checkbox" id="question1-3" name="question1" value="狸顔"> 狸顔<br>
-        <input type="checkbox" id="question1-4" name="question1" value="きつね顔"> きつね顔<br><br>
-
-        <label for="question2">質問2: 性格？（複数選択可）</label><br>
-        <input type="checkbox" id="question2-1" name="question2" value="仕事"> 仕事<br>
-        <input type="checkbox" id="question2-2" name="question2" value="家族"> 家族<br>
-        <input type="checkbox" id="question2-3" name="question2" value="友人"> 友人<br>
-        <input type="checkbox" id="question2-4" name="question2" value="趣味"> 趣味<br><br>
-
-        <button type="button" onclick="submitForm()">送信</button>
+    <div class="container">
+    <h1>質問設定 今の推し（好きな人）を想像して...</h1>
+    <form action="http://127.0.0.1:5000/submit" method="post">
+        <h2>顔の好みは</h2>
+        <input type="checkbox" name="face_preference" value="いぬ"> いぬ<br>
+        <input type="checkbox" name="face_preference" value="ねこ"> ねこ<br>
+        <input type="checkbox" name="face_preference" value="うさぎ"> うさぎ<br>
+        <input type="checkbox" name="face_preference" value="きつね"> きつね<br>
+        <input type="checkbox" name="face_preference" value="たぬき"> たぬき<br>
+        
+        <h2>性格は</h2>
+        <input type="checkbox" name="personality" value="外交型"> 外交型<br>
+        <input type="checkbox" name="personality" value="感覚型"> 感覚型<br>
+        <input type="checkbox" name="personality" value="思考型"> 思考型<br>
+        <input type="checkbox" name="personality" value="判断型"> 判断型<br>
+        <input type="checkbox" name="personality" value="自己主張型"> 自己主張型<br>
+        
+        <h2>声</h2>
+        <input type="checkbox" name="voice" value="かっこいい"> かっこいい<br>
+        <input type="checkbox" name="voice" value="かわいい"> かわいい<br>
+        <input type="checkbox" name="voice" value="セクシー"> セクシー<br>
+        <input type="checkbox" name="voice" value="フレッシュ"> フレッシュ<br>
+        <input type="checkbox" name="voice" value="伸び"> 伸び<br>
+        
+        <h2>ダンス</h2>
+        <input type="checkbox" name="dance" value="しなやか"> しなやか<br>
+        <input type="checkbox" name="dance" value="きれい"> きれい<br>
+        <input type="checkbox" name="dance" value="セクシー"> セクシー<br>
+        <input type="checkbox" name="dance" value="シンクロダンス"> シンクロダンス<br>
+        <input type="checkbox" name="dance" value="激しさ"> 激しさ<br>
+        
+        <h2>推し活で感じること</h2>
+        <input type="checkbox" name="feeling" value="直接会いたい"> 直接会いたい<br>
+        <input type="checkbox" name="feeling" value="見ていたい"> 見ていたい<br>
+        <input type="checkbox" name="feeling" value="知りたい"> 知りたい<br>
+        <input type="checkbox" name="feeling" value="ストレス発散したい"> ストレス発散したい<br>
+        <input type="checkbox" name="feeling" value="コミュニティを作りたい"> コミュニティを作りたい<br>
+        
+        <br>
+        <input type="submit" value="送信">
     </form>
-
-    <h2>結果</h2>
-    <div id="result"></div>
-
-    <script>
-        function submitForm() {
-            // 各質問の選択肢を取得
-            const selectedQuestion1 = Array.from(document.querySelectorAll('input[name="question1"]:checked')).map(cb => cb.value);
-            const selectedQuestion2 = Array.from(document.querySelectorAll('input[name="question2"]:checked')).map(cb => cb.value);
-
-            // サーバーに送信
-            fetch('/submit-survey', {
-                method: 'POST',
-                body: JSON.stringify({
-                    question1: selectedQuestion1,
-                    question2: selectedQuestion2
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').innerText = '最適化結果: ' + data.result;
-            });
-        }
-    </script>
+    </div>
 </body>
 </html>

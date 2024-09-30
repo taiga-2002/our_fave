@@ -5,15 +5,15 @@ from quantum_annealing import create_qubo_matrix, optimize_qubo  # quantum_annea
 
 logging.basicConfig(level=logging.DEBUG)
 
-app = Flask(__name__, template_folder='/Users/toedataiga/dev/our_favo/frontend', static_folder='../static')
-people = [
-    {"name": "Person 1", "image": "person1.jpg"},
-    {"name": "Person 2", "image": "person2.jpg"},
-    {"name": "Person 3", "image": "person3.jpg"},
-    {"name": "Person 4", "image": "person4.jpg"},
-    {"name": "Person 5", "image": "person5.jpg"},
-]
 
+app = Flask(__name__, template_folder='../frontend', static_folder='../static')
+people = [
+    {"name": "A", "image": "mooseki.jpg"},
+    {"name": "B", "image": "person2.jpg"},
+    {"name": "C", "image": "person3.jpg"},
+    {"name": "D", "image": "person4.jpg"},
+    {"name": "E", "image": "person5.jpg"},
+]
 
 # アンケートオプションの定義
 face_options = ['いぬ', 'ねこ', 'うさぎ', 'きつね', 'たぬき']
@@ -50,8 +50,8 @@ def submit_survey():
     [1., 0., 0., 0., 0.],
     [1., 0., 0., 0., 0.]])
         matrix2=np.array([
-    [1., 0., 0., 0., 0.,],
-    [1., 0. ,0., 0., 0.],
+    [0., 0., 0., 1., 0.,],
+    [0., 0. ,1., 0., 0.],
     [1., 0., 0., 0., 0.],
     [1.,0., 0., 0., 0.],
     [1., 0., 0., 0., 0.]])
@@ -82,24 +82,15 @@ def submit_survey():
         if ((matrices)==0).all():
             for j in range(input_data.shape[0]):
                 matrices[0,j,0]+=ep
-            
-
-            
         
-        matrices_new=matrices-mean
-        y=np.array([1,2,3,4,5])
+        matrices_new=matrices-mean#各設問の各選択肢の平均を０にする
+        y=np.array([1,2,3,4,5])#各制約の重み
         for i1 in range(input_data.shape[0]):
             for i2 in range(input_data.shape[0]):
                 for i3 in range(input_data.shape[0]):
-                    similarity_matrix[i1,i2]+=y[i3]*(matrices_new[i1,i3,:]/(np.linalg.norm(matrices_new[i1,i3,:])+ep))@matrices_new[i2,i3,:]/(np.linalg.norm(matrices[i2,i3,:]+ep))
+                    similarity_matrix[i1,i2]+=y[i3]*(matrices_new[i1,i3,:]/(np.linalg.norm(matrices_new[i1,i3,:])+ep))@matrices_new[i2,i3,:]/(np.linalg.norm(matrices[i2,i3,:]+ep))#正規化
 
-        similarity_matrix=similarity_matrix/sum(y)
-
-
-
-
-
-
+        similarity_matrix=similarity_matrix/sum(y)#
 
         # QUBO行列を生成
         qubo, offset = create_qubo_matrix(input_data, similarity_matrix,matrices)
@@ -116,6 +107,6 @@ def submit_survey():
         logging.error(f"Error occurred: {e}")
         return f"An error occurred: {e}", 500
 
-
 if __name__ == '__main__':
     app.run(debug=True)
+
