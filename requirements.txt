@@ -1,0 +1,6 @@
+numpy
+pyqubo
+openjij
+dwave-system
+flask
+dimod==0.12.0
