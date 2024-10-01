@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import numpy as np
 import logging
-from quantum_annealing import create_qubo_matrix, optimize_qubo  # quantum_annealing.pyからインポート
+from backend.quantum_annealing import create_qubo_matrix, optimize_qubo
 
 logging.basicConfig(level=logging.DEBUG)
 
