@@ -1,5 +1,3 @@
-/* static/style.css */
-
 /* Google Fonts のインポート */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@400;500;700&display=swap');
 
@@ -67,8 +65,6 @@ h1 {
 
 h2 {
     font-size: 2rem;
-    border-bottom: 3px solid var(--primary-color);
-    padding-bottom: 5px;
     margin-top: 30px;
 }
 
@@ -81,104 +77,24 @@ form {
 
 /* フォームグループ */
 .form-group {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 40px; /* 各質問グループの間により多くのスペースを追加 */
 }
 
-.form-group h2 {
-    margin-bottom: 15px;
-}
-
-/* ラベルとチェックボックス */
-.form-group label {
+label {
     display: flex;
+    justify-content: space-between; /* テキストとチェックボックスの間に自然なスペース */
     align-items: center;
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
+    font-size: 1.2rem; /* フォントサイズを少し大きくして読みやすく */
+    padding: 15px 0; /* 各質問項目にパディングを追加して余裕を持たせる */
+    width: 350px; /* 質問項目の幅を少し広げることで余裕を持たせる */
 }
 
-.form-group label:hover {
-    color: var(--primary-color);
-}
-
-/* デフォルトのチェックボックスを隠す */
-.form-group input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-/* カスタムチェックボックス */
-.form-group .custom-checkbox {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: var(--checkbox-size);
+input[type="checkbox"] {
     width: var(--checkbox-size);
-    background-color: #fff;
-    border: 2px solid var(--checkbox-border-color);
-    border-radius: 6px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-/* チェック時のスタイル */
-.form-group input[type="checkbox"]:checked ~ .custom-checkbox {
-    background-color: var(--checkbox-checked-color);
-    border-color: var(--checkbox-checked-color);
-}
-
-/* チェックマーク */
-.form-group .custom-checkbox::after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.form-group input[type="checkbox"]:checked ~ .custom-checkbox::after {
-    display: block;
-}
-
-.form-group .custom-checkbox::after {
-    left: 7px;
-    top: 3px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-}
-
-/* テキスト入力フィールド */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    margin-top: 8px;
-    border: 2px solid var(--input-border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group textarea:focus {
-    border-color: var(--input-focus-color);
-    box-shadow: 0 0 8px var(--input-focus-color);
-    outline: none;
-}
-
-/* テキストエリア */
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
+    height: var(--checkbox-size);
+    cursor: pointer;
+    accent-color: var(--primary-color); /* チェックボックスの色をテーマに合わせる */
+    margin-left: 20px; /* チェックボックスとテキストの間に広めのスペースを追加 */
 }
 
 /* 送信ボタン */
@@ -200,53 +116,6 @@ input[type="submit"]:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* テーブル */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-th, td {
-    padding: 18px 20px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 1rem;
-}
-
-th {
-    background-color: var(--primary-color);
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-tr:nth-child(even) {
-    background-color: var(--secondary-color);
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* オフセット */
-.offset {
-    background-color: var(--accent-color);
-    color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 1.3rem;
-    font-weight: 500;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(255, 111, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.offset:hover {
-    transform: scale(1.02);
-}
-
 /* リンクスタイル */
 a {
     color: var(--primary-color);
@@ -260,34 +129,6 @@ a:hover {
 }
 
 /* レスポンシブデザイン */
-@media (max-width: 992px) {
-    .container {
-        padding: 35px 25px;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
-    .form-group label {
-        font-size: 1rem;
-    }
-
-    th, td {
-        padding: 15px 18px;
-        font-size: 0.95rem;
-    }
-
-    .offset {
-        font-size: 1.2rem;
-        padding: 12px;
-    }
-}
-
 @media (max-width: 768px) {
     .container {
         padding: 30px 20px;
@@ -302,17 +143,8 @@ a:hover {
     }
 
     .form-group label {
-        font-size: 0.95rem;
-    }
-
-    th, td {
-        padding: 12px 15px;
-        font-size: 0.9rem;
-    }
-
-    .offset {
-        font-size: 1.1rem;
-        padding: 10px;
+        font-size: 1rem;
+        width: 100%; /* モバイル画面での幅を全体に広げる */
     }
 }
 
@@ -335,16 +167,7 @@ a:hover {
 
     .form-group label {
         font-size: 0.9rem;
-    }
-
-    th, td {
-        padding: 10px 12px;
-        font-size: 0.85rem;
-    }
-
-    .offset {
-        font-size: 1rem;
-        padding: 8px;
+        padding: 10px 0; /* モバイルでの余白を調整 */
     }
 
     input[type="submit"] {
