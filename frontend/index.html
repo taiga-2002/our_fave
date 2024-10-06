@@ -8,46 +8,56 @@
 </head>
 <body>
     <div class="container">
-    <h1>質問設定 今の推し（好きな人）を想像して...</h1>
-    <form action="/submit" method="post">
-        <h2>顔の好みは</h2>
-        <input type="checkbox" name="face_preference" value="いぬ"> いぬ<br>
-        <input type="checkbox" name="face_preference" value="ねこ"> ねこ<br>
-        <input type="checkbox" name="face_preference" value="うさぎ"> うさぎ<br>
-        <input type="checkbox" name="face_preference" value="きつね"> きつね<br>
-        <input type="checkbox" name="face_preference" value="たぬき"> たぬき<br>
-        
-        <h2>性格は</h2>
-        <input type="checkbox" name="personality" value="外交型"> 外交型<br>
-        <input type="checkbox" name="personality" value="感覚型"> 感覚型<br>
-        <input type="checkbox" name="personality" value="思考型"> 思考型<br>
-        <input type="checkbox" name="personality" value="判断型"> 判断型<br>
-        <input type="checkbox" name="personality" value="自己主張型"> 自己主張型<br>
-        
-        <h2>声</h2>
-        <input type="checkbox" name="voice" value="かっこいい"> かっこいい<br>
-        <input type="checkbox" name="voice" value="かわいい"> かわいい<br>
-        <input type="checkbox" name="voice" value="セクシー"> セクシー<br>
-        <input type="checkbox" name="voice" value="フレッシュ"> フレッシュ<br>
-        <input type="checkbox" name="voice" value="伸び"> 伸び<br>
-        
-        <h2>ダンス</h2>
-        <input type="checkbox" name="dance" value="しなやか"> しなやか<br>
-        <input type="checkbox" name="dance" value="きれい"> きれい<br>
-        <input type="checkbox" name="dance" value="セクシー"> セクシー<br>
-        <input type="checkbox" name="dance" value="シンクロダンス"> シンクロダンス<br>
-        <input type="checkbox" name="dance" value="激しさ"> 激しさ<br>
-        
-        <h2>推し活で感じること</h2>
-        <input type="checkbox" name="feeling" value="直接会いたい"> 直接会いたい<br>
-        <input type="checkbox" name="feeling" value="見ていたい"> 見ていたい<br>
-        <input type="checkbox" name="feeling" value="知りたい"> 知りたい<br>
-        <input type="checkbox" name="feeling" value="ストレス発散したい"> ストレス発散したい<br>
-        <input type="checkbox" name="feeling" value="コミュニティを作りたい"> コミュニティを作りたい<br>
-        
-        <br>
-        <input type="submit" value="送信">
-    </form>
+        <h1>今の推し（好きな人）を想像して...</h1>
+        <form action="/submit" method="post">
+            <div class="form-group">
+                <h2>顔の好みは</h2>
+                <label>いぬ <input type="checkbox" name="face_preference" value="いぬ"></label>
+                <label>ねこ <input type="checkbox" name="face_preference" value="ねこ"></label>
+                <label>うさぎ <input type="checkbox" name="face_preference" value="うさぎ"></label>
+                <label>きつね <input type="checkbox" name="face_preference" value="きつね"></label>
+                <label>たぬき <input type="checkbox" name="face_preference" value="たぬき"></label>
+            </div>
+            
+            <div class="form-group">
+                <h2>性格は</h2>
+                <label>外交型 <input type="checkbox" name="personality" value="外交型"></label>
+                <label>感覚型 <input type="checkbox" name="personality" value="感覚型"></label>
+                <label>思考型 <input type="checkbox" name="personality" value="思考型"></label>
+                <label>判断型 <input type="checkbox" name="personality" value="判断型"></label>
+                <label>自己主張型 <input type="checkbox" name="personality" value="自己主張型"></label>
+            </div>
+            
+            <div class="form-group">
+                <h2>声</h2>
+                <label>かっこいい <input type="checkbox" name="voice" value="かっこいい"></label>
+                <label>かわいい <input type="checkbox" name="voice" value="かわいい"></label>
+                <label>セクシー <input type="checkbox" name="voice" value="セクシー"></label>
+                <label>フレッシュ <input type="checkbox" name="voice" value="フレッシュ"></label>
+                <label>伸び <input type="checkbox" name="voice" value="伸び"></label>
+            </div>
+            
+            <div class="form-group">
+                <h2>ダンス</h2>
+                <label>しなやか <input type="checkbox" name="dance" value="しなやか"></label>
+                <label>きれい <input type="checkbox" name="dance" value="きれい"></label>
+                <label>セクシー <input type="checkbox" name="dance" value="セクシー"></label>
+                <label>シンクロダンス <input type="checkbox" name="dance" value="シンクロダンス"></label>
+                <label>激しさ <input type="checkbox" name="dance" value="激しさ"></label>
+            </div>
+            
+            <div class="form-group">
+                <h2>推し活で感じること</h2>
+                <label>直接会いたい <input type="checkbox" name="feeling" value="直接会いたい"></label>
+                <label>見ていたい <input type="checkbox" name="feeling" value="見ていたい"></label>
+                <label>知りたい <input type="checkbox" name="feeling" value="知りたい"></label>
+                <label>ストレス発散したい <input type="checkbox" name="feeling" value="ストレス発散したい"></label>
+                <label>コミュニティを作りたい <input type="checkbox" name="feeling" value="コミュニティを作りたい"></label>
+            </div>
+
+            <br>
+            <input type="submit" value="送信">
+        </form>
     </div>
 </body>
 </html>
